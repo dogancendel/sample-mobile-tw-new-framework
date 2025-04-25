@@ -15,13 +15,13 @@ public class DriverUtils {
         caps.setCapability("deviceName", "pixel-6-pro");
         caps.setCapability("automationName", "UiAutomator2");
         caps.setCapability("disableIdLocatorAutocompletion", true);
-        caps.setCapability("app", System.getProperty("user.dir") + "/src/test/resources/apps/trustwallet.apk");
+        caps.setCapability("apps", System.getProperty("user.dir") + "/src/test/resources/apps/trustwallet.apk");
         caps.setCapability("autoGrantPermissions", true);
         caps.setCapability("newCommandTimeout", 100);
         caps.setCapability("androidInstallTimeout", 900000);
 
         try {
-            driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), caps);
+            driver = new AndroidDriver(new URL("http://127.0.0.1:4725"), caps);
         } catch (Exception e) {
             throw new RuntimeException("Cannot initialize driver", e);
         }
