@@ -1,36 +1,25 @@
 package pages;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import utils.DriverUtils;
-import utils.Utils;
+import org.testng.internal.Utils;
 
-public class WalletPage {
+public class WalletPage extends BasePage {
 
-    AppiumDriver driver = DriverUtils.getDriver();
+    private final By itemTitle = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"itemTitle\")");
 
     public void compareWalletName(String expectedWalletName) {
-        By itemTitleElement = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"itemTitle\")");
-        Utils.log("Waiting for 'itemTitle' element to be visible on Wallet Page.");
-
-        WebElement visibleItemTitle = Utils.waitForVisibility(itemTitleElement, 10);
-
-        if (visibleItemTitle != null) {
-            String actualWalletNameOnWalletPage = visibleItemTitle.getText().trim();
+        Utils.log("Waiting for wallet name to appear on Wallet Page.");
+        WebElement element = waitForVisibility(itemTitle, 10);
+        if (element != null) {
+            String actual = element.getText().trim();
             expectedWalletName = expectedWalletName.trim();
-
-            Utils.log("Actual wallet name on Wallet Page (trimmed): " + actualWalletNameOnWalletPage);
-            Utils.log("Expected wallet name from Home Page (trimmed): " + expectedWalletName);
-
-            Assert.assertEquals(actualWalletNameOnWalletPage, expectedWalletName, "Wallet name verification failed on Wallet Page.");
-            Utils.log("Wallet name verification successful on Wallet Page.");
+            Utils.log("Expected: " + expectedWalletName + " | Actual: " + actual);
+            Assert.assertEquals(actual, expectedWalletName, "Wallet name verification failed.");
         } else {
-            Utils.log("Error: 'itemTitle' element was not visible on Wallet Page within the specified timeout.");
-            Assert.fail("'itemTitle' element was not visible on Wallet Page within the specified timeout.");
+            Assert.fail("'itemTitle' not visible on Wallet Page.");
         }
     }
-
 }

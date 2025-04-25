@@ -19,7 +19,9 @@ public class CreateWalletSteps {
     String walletName;
 
     @Given("Trust Wallet application is opened")
-    public void openApp() {}
+    public void openApp() {
+        // App açıldığında yapılacak işlemler burada olabilir. Şu an boş bırakılmış.
+    }
 
     @When("User clicks on {string} button")
     public void userClicksCreateWallet(String btn) {

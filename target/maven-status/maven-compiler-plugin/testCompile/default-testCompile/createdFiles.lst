@@ -1,0 +1,12 @@
+pages/WalletPage.class
+utils/Utils.class
+pages/CreatePasscodePage.class
+pages/WelcomePage.class
+pages/ConfirmPasscodePage.class
+stepdefinitions/CreateWalletSteps.class
+pages/HomePage.class
+pages/BasePage.class
+runners/TestRunner.class
+hooks/Hooks.class
+pages/SkipNotificationPopUp.class
+utils/DriverUtils.class
